@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
-ad// void main() {
+// void main() {
 //   runApp(MyApp());
 // }
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    questionIndex = questionIndex + 1;
+    print(questionIndex);
+  }
+
   @override
   Widget build(BuildContext context) {
     var questions = [
@@ -20,10 +27,24 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text('The question!'),
-            RaisedButton(child: Text('Answer 1'), onPressed: null),
-            RaisedButton(child: Text('Answer 2'), onPressed: null),
-            RaisedButton(child: Text('Answer 3'), onPressed: null),
+            Text(
+              questions[questionIndex],
+            ),
+            RaisedButton(
+              child: Text('Answer 1'),
+              onPressed: answerQuestion,
+            ),
+            RaisedButton(
+              child: Text('Answer 2'),
+              onPressed: () => print('Answer 2 chose!'),
+            ),
+            RaisedButton(
+              child: Text('Answer 3'),
+              onPressed: () {
+                // ...
+                print('Answer 3 chose');
+              },
+            ),
           ],
         ),
       ),
